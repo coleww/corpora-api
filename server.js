@@ -20,9 +20,9 @@ var existsInIndex = function(path, index){
 
 
 module.exports = function(){
+  var index = buildIndex();
   return http.createServer(function (req, res) {
     var uri = url.parse(req.url).pathname.replace(".json", "").substr(1);
-    var index = buildIndex();
 
     if (uri === "") {
       res.writeHead(200, { "Content-Type": "application/json" });
