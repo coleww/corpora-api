@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Corpora API Example</title>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <h1>Corpora API Example</h1>
+
+  <p id="data"></p>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    // ajax some
+    $.getJSON("http://corpora-api.herokuapp.com", function(data){
+      $("#data").text(data);
+    })
+  </script>
+
+</body>
+</html>
