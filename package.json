@@ -1,0 +1,26 @@
+{
+  "name": "corpora-api",
+  "version": "1.0.0",
+  "description": "simple api serving up the corpora",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coleww/corpora-api.git"
+  },
+  "keywords": [
+    "corpora",
+    "bots"
+  ],
+  "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coleww/corpora-api/issues"
+  },
+  "homepage": "https://github.com/coleww/corpora-api",
+  "devDependencies": {
+    "supertest": "^0.15.0"
+  }
+}
