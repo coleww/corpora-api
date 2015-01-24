@@ -2,11 +2,12 @@ var http = require("http");
 var fs = require("fs");
 var url = require("url");
 
+var DATA_DIR = "corpora/data/";
 
 var buildIndex = function(){
   var index = {};
-  fs.readdirSync("corpora/data/").forEach(function(dir){
-    index[dir] = fs.readdirSync("corpora/data/" + dir).map(function(el){
+  fs.readdirSync(DATA_DIR).forEach(function(dir){
+    index[dir] = fs.readdirSync(DATA_DIR + dir).map(function(el){
       return el.replace(".json", "");
     });
   });
@@ -28,7 +29,7 @@ module.exports = function(){
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify({description: "an API for the corpora", data: index}));
     } else if (existsInIndex(uri, index)) {
-      fs.readFile("corpora/data/" + uri + ".json", function(err, data){
+      fs.readFile(DATA_DIR + uri + ".json", function(err, data){
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({data: JSON.parse(data)}));
       });
