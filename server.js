@@ -13,6 +13,16 @@ module.exports = function(){
   return http.createServer(function (req, res) {
     var uri = url.parse(req.url).pathname.replace(".json", "").substr(1);
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    if ( req.method === 'OPTIONS' ) {
+      res.writeHead(200);
+      res.end();
+      return;
+    }
+
     if (uri === "") {
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify({description: "an API for the corpora", data: index}));
