@@ -2,26 +2,14 @@ var http = require("http");
 var fs = require("fs");
 var url = require("url");
 
+var tools = require("./corpora_index.js");
+var buildIndex = tools.buildIndex;
+var existsInIndex = tools.existsInIndex;
+
 var DATA_DIR = "corpora/data/";
 
-var buildIndex = function(){
-  var index = {};
-  fs.readdirSync(DATA_DIR).forEach(function(dir){
-    index[dir] = fs.readdirSync(DATA_DIR + dir).map(function(el){
-      return el.replace(".json", "");
-    });
-  });
-  return index;
-};
-
-var existsInIndex = function(path, index){
-  var parts = path.split("/");
-  return index[parts[0]] && index[parts[0]].indexOf(parts[1]) !== -1;
-};
-
-
 module.exports = function(){
-  var index = buildIndex();
+  var index = buildIndex(DATA_DIR);
   return http.createServer(function (req, res) {
     var uri = url.parse(req.url).pathname.replace(".json", "").substr(1);
 
