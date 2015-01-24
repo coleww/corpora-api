@@ -28,7 +28,6 @@ test.get("/foods/fruits")
   .expect(200)
   .end(function(err, res){
     if (err) throw err;
-    // if (!res.body.description) throw "Needs a description";
-    // if (!res.body.data) throw "Needs some data";
-    // if (res.body.data.foods.indexOf("fruits") === -1) throw "Needs data in that data";
+    if (!res.body.data) throw "Needs some data";
+    if (res.body.data.fruits.indexOf("apple") === -1) throw "Needs an apple a day in that data";
   });
