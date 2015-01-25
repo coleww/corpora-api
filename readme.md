@@ -1,9 +1,9 @@
 CORPORA API
 ----------------
 
-A simple API for serving up the [Corpora](https://github.com/dariusk/corpora)
+A lil node server for offering up the [Corpora](https://github.com/dariusk/corpora) data as sweet JSON API.
 
-running at https://corpora-api.herokuapp.com/
+Currently running 'live' at https://corpora-api.herokuapp.com/
 
 
 ### GET "/"
@@ -12,7 +12,7 @@ Returns the index of the API. Includes a `data` object that lists the available 
 
     200, "Content-Type": "application/json"
     {
-        "description":"an API for the corpora",
+        "description":"an API for the corpora. to access a data, navigate to '/{key}/{value}', for example: '/animals/dinosaurs' or '/words/literature/shakespeare_words'",
         "data": {
             "animals": ["common","dinosaurs","dogs"],
             "archetypes":["artifact","character","event","setting"],
@@ -28,23 +28,34 @@ Returns the index of the API. Includes a `data` object that lists the available 
             "plants":["flowers"],
             "science":["elements","hail_size","planets","pregnancy","toxic_chemicals"],
             "technology":["computer_sciences","fireworks","guns_n_rifles","knots"],
-            "words":["adjs","adverbs","common","literature","nouns","prefix_root_suffix","proverbs","states_of_drunkenness","us_president_quotes","verbs","word_clues"]
+            "words":["adjs","adverbs","common","nouns","prefix_root_suffix","proverbs","states_of_drunkenness","us_president_quotes","verbs"],
+            "words/literature":["mr_men_little_miss","shakespeare_phrases","shakespeare_sonnets","shakespeare_words"],
+            "words/word_clues":["clues_five","clues_four","clues_six"]}
         }
     }
 
 ### GET "/{folder}/{file}"
     200, "Content-Type": "application/json"
     {
-        "data": {
-            // contents of corpora/data/{folder}/{file}.json
-        }
+        "data": // contents of corpora/data/{folder}/{file}.json
+
     }
 
-return `404 Not Found` if "/{folder}/{file}" does not exist in corpora data.
+    Returns `404 Not Found` if "/{folder}/{file}" does not exist in corpora data.
 
 
+#### TODO
 
-TODO:
-    make an example app that consumes the API
-    CORS?
-    handle sub-sub-sub-directories arbitrarily
+- how to auto-pull in changes to corpora?
+
+#### DEVELOPMUNK
+update the corpora
+- cd corpora/ && git pull origin master && cd ..
+
+to test stuff
+- npm install
+- node test.js
+
+run the server
+- node index.js
+
