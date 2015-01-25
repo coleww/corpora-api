@@ -5,6 +5,8 @@ A lil node server for offering up the [Corpora](https://github.com/dariusk/corpo
 
 Currently running 'live' at https://corpora-api.herokuapp.com/
 
+[Browse some JSON](http://coleww.github.io/corpora-api/)
+
 
 ### GET "/"
 
