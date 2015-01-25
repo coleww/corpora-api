@@ -6,7 +6,10 @@ module.exports.buildIndex = function(dataDir){
   while (toIndex.length) {
     var subDir = toIndex.shift();
     index[subDir] = fs.readdirSync(dataDir + subDir).filter(function(file){
-      return file.indexOf(".json") !== -1 ? true : (file !== ".DS_Store" && toIndex.push(subDir+"/"+file), false);
+      return file.indexOf(".json") !== -1 ? true : (
+        file !== ".DS_Store" && toIndex.push(subDir+"/"+file),
+        false
+      );
     }).map(removeDotJson);
   }
   return index;
