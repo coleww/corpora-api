@@ -8,6 +8,8 @@ var existsInIndex = tools.existsInIndex;
 
 var DATA_DIR = "corpora/data/";
 
+var intro = "an API for the corpora. to access a data, navigate to '/{key}/{value}', for example: '/animals/dinosaurs' or '/words/literature/shakespeare_words'";
+
 module.exports = function(){
   var index = buildIndex(DATA_DIR);
   return http.createServer(function (req, res) {
@@ -25,7 +27,7 @@ module.exports = function(){
 
     if (uri === "") {
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({description: "an API for the corpora", data: index}));
+      res.end(JSON.stringify({description: intro, data: index}));
     } else if (existsInIndex(uri, index)) {
       fs.readFile(DATA_DIR + uri + ".json", function(err, data){
         res.writeHead(200, { "Content-Type": "application/json" });
