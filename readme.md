@@ -1,9 +1,9 @@
 CORPORA API
 ----------------
 
-A lil node server for offering up the [Corpora](https://github.com/dariusk/corpora) data as sweet JSON API.
+A lil node server for offering up the [Corpora](https://github.com/dariusk/corpora) data as sweet JSON API. (or, if you fork it, any sort of directory structure of JSON files)
 
-Currently running 'live' at https://corpora-api.herokuapp.com/
+Currently running 'live' at https://corpora-api.herokuapp.com/ up to 18 hours a day!
 
 [Browse some JSON](http://coleww.github.io/corpora-api/)
 
